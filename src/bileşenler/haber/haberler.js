@@ -150,7 +150,7 @@ function haberYapici(haberler) {
   article.append(span);
 
   span.addEventListener("click", (e) => {
-    e.target.classList.toggle("article-open");
+    article.classList.toggle("article-open");
   })
 
   return article;
