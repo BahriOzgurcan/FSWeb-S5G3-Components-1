@@ -87,6 +87,14 @@ const data = [
     ucuncuParagraf: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    baslik: 'Basaksehir:1 Fenerbahce:2',
+  tarih: '19 Nisan 2023',
+  ilkParagraf: `Rezil futbol`,
+  ikinciParagraf: `Son dakika golleri`,
+  ucuncuParagraf: `Fenerli olmak cok zor`
+
   }
 ];
 
@@ -115,3 +123,40 @@ const data = [
   Adım 5: Veri dizisine yeni haber nesnesi eklemeyi deneyin. Diğer verilerle aynı yapıda olmasına dikkat edin.
   Eklediğiniz yeni haberi görmek için sayfayı yenileyin.
 */
+
+function haberYapici(haberler) {
+  const article = document.createElement("div");
+  article.classList.add("article");
+
+  const baslik = document.createElement("h2");
+  article.append(baslik);
+  baslik.textContent = `${haberler.baslik}`
+
+  const tarih = document.createElement("p");
+  tarih.className = "tarih";
+  article.append(tarih);
+  tarih.textContent = `${haberler.tarih}`
+
+  for (let i = 0; i < 3; i++) {
+    const paragraf = document.createElement("p");
+    const x = ["ilkParagraf", "ikinciParagraf", "ucuncuParagraf"];
+    paragraf.textContent = haberler[`${x[i]}`];
+    article.append(paragraf);
+  };
+
+  const span = document.createElement("span");
+  span.className = "expandButton";
+  span.textContent = "+";
+  article.append(span);
+
+  span.addEventListener("click", (e) => {
+    e.target.classList.toggle("article-open");
+  })
+
+  return article;
+}
+
+for(let i = 0; i < data.length; i++ ){
+  document.querySelector(".articles").append(haberYapici(data[i]));
+  
+}

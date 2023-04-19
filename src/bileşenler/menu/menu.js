@@ -1,14 +1,7 @@
 import './Menu.less'
 
 // Kullanacağımız veri bu, üzerinde çalışın ama henüz hiçbir şeyi değiştirmeyin.
-let menuElemanlari = [
-  'Gündem',
-  'Dünya',
-  "Ekonomi",
-  'Yazarlar',
-  'Burç Yorumları',
-  'Diğer'
-];
+
 
 /*
   Adım 1: Aşağıdaki etiketlee gibi bir menü oluşturmak için 'menuYapici' adlı bir bileşen yazın:
@@ -34,3 +27,35 @@ let menuElemanlari = [
 
   Adım 6: 'menuYapici' fonksiyonunu ve 'menuElemanlari' dizisini kullanarak menüyü oluşturun, ve döndürülen menüyü header'e ekleyin.
 */
+
+let menuElemanlari = [
+  'Gündem',
+  'Dünya',
+  "Ekonomi",
+  'Yazarlar',
+  'Burç Yorumları',
+  'Diğer'
+];
+
+const menuYapici = (dizi) => {
+  const div = document.createElement("div");
+  div.className = "menu";
+  const ul = document.createElement("ul");
+  div.appendChild(ul);
+
+  dizi.forEach(element => {
+    const il = document.createElement("il");
+    il.textContent = `${element}`;
+    ul.appendChild(il);
+  });
+
+  document.querySelector(".menu-button").addEventListener("click", () => { 
+    div.classList.toggle("menu--open");
+  });
+
+  return div;
+}
+
+document.querySelector(".header").appendChild(menuYapici(menuElemanlari));
+
+console.log(menuYapici(menuElemanlari));
