@@ -44,7 +44,7 @@ const menuYapici = (dizi) => {
   div.appendChild(ul);
 
   dizi.forEach(element => {
-    const il = document.createElement("il");
+    const il = document.createElement("li");
     il.textContent = `${element}`;
     ul.appendChild(il);
   });
@@ -57,5 +57,3 @@ const menuYapici = (dizi) => {
 }
 
 document.querySelector(".header").appendChild(menuYapici(menuElemanlari));
-
-console.log(menuYapici(menuElemanlari));

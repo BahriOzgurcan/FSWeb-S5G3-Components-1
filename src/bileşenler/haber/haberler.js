@@ -105,7 +105,7 @@ const data = [
 
   <div class="article">
     <h2>{haber başlığı}</h2>
-    <p class="tarih">{haber tarihi}</p>
+    <p class="date">{haber tarihi}</p>
 
     {üç ayrı paragraf elementi}
 
@@ -133,7 +133,7 @@ function haberYapici(haberler) {
   baslik.textContent = `${haberler.baslik}`
 
   const tarih = document.createElement("p");
-  tarih.className = "tarih";
+  tarih.className = "date";
   article.append(tarih);
   tarih.textContent = `${haberler.tarih}`
 
@@ -156,7 +156,8 @@ function haberYapici(haberler) {
   return article;
 }
 
-for(let i = 0; i < data.length; i++ ){
-  document.querySelector(".articles").append(haberYapici(data[i]));
-  
-}
+// for(let i = 0; i < data.length; i++ ){
+//   document.querySelector(".articles").append(haberYapici(data[i]));
+// }
+
+data.map((x)=>{document.querySelector(".articles").append(haberYapici(x))});
